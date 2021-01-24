@@ -1,7 +1,6 @@
 package com.erkan.scheduler.demo.service;
 
 import net.javacrumbs.shedlock.core.LockProvider;
-import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Service;
@@ -12,14 +11,14 @@ import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 
 @Service
-public class SchedulerManager {
+public class SchedulerManager3 {
 
     private TaskScheduler taskScheduler;
     private Map<String, ScheduledFuture> tasks = new HashMap<>();
     private LockProvider lockProvider;
 
-    public SchedulerManager(TaskScheduler taskScheduler,
-                            LockProvider lockProvider) {
+    public SchedulerManager3(TaskScheduler taskScheduler,
+                             LockProvider lockProvider) {
         this.taskScheduler = taskScheduler;
         this.lockProvider = lockProvider;
     }
@@ -44,6 +43,3 @@ public class SchedulerManager {
         return new LockRunnable(runnable, lockName, lockProvider);
     }
 }
-
-
-

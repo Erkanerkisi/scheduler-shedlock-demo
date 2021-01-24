@@ -11,17 +11,12 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SchedulerConfiguration {
+
     @Bean
     public LockProvider lockProvider(DataSource dataSource) {
 
         return new JdbcTemplateLockProvider(JdbcTemplateLockProvider.Configuration.builder()
                 .withLockedByValue("1").withTableName("XXER.SHEDLOCK").withJdbcTemplate(new JdbcTemplate(dataSource)).build());
-    }
-
-    @Bean
-    public LockProvider lockProvider2(DataSource dataSource) {
-        return new JdbcTemplateLockProvider(JdbcTemplateLockProvider.Configuration.builder()
-                .withLockedByValue("2").withTableName("XXER.SHEDLOCK").withJdbcTemplate(new JdbcTemplate(dataSource)).build());
     }
 
     @Bean
